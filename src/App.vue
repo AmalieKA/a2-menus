@@ -47,6 +47,7 @@ function alertTheUser(number) { //when each button is clicked, this function is 
     <!-- left uses cos as it (in the unit circle) represents the x-coordinate of a point along the circumference. top: uses sin as it represents y -->
     <!-- ${x + radius + ...} gives the value of the x-position of the mouse + the radius + ... -->
     <!-- (2 * Math.PI * button) / buttons) is 2π (circumference of unit circle times the button number (position along the circle) / buttons to divide the circle into x number of positions -->
+    <!-- `` is used in order to output both the value and px (both a value and and string in one = the whole thing as a string)-->
     <!-- {{ button }} writes number of button on the button --> 
     <button
       v-for="button in buttons"
@@ -132,6 +133,9 @@ function alertTheUser(number) { //when each button is clicked, this function is 
   transform: translate(-50%, -50%);
 }
 
+/* top and left places  top-left corner of  element in center, not the actual center of the element.
+translate(-50%, -50%) moves the element left and up by half of its width and height putting its center in the center of the canvas. */
+
 button {
   border-radius: 50%;
   padding: 0;
@@ -140,5 +144,6 @@ button {
   border: 1px solid white;
   background-color: DarkOrange;
   color: white;
+  transform: translate(-50%, -50%);
 }
 </style>
