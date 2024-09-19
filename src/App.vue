@@ -1,35 +1,37 @@
-<script setup>
-import { ref } from 'vue';
-
-const menuIsOpen = ref(false); //set to false upon initialization
-const openOrClose = ref('OPEN'); //the text that is rendered = when the menu closed, it will say "open"
-const buttons = ref(10); // !!! change the number of buttons
-const radius = ref(100); //the distance from the mouse position to the buttons
-const x = ref(0); //no value yet
-const y = ref(0); //no value yet
-
-function canvasHasBeenClicked(event) { //when the canvas has been clicked
-  recordMousePosition(event); //executes the function
-
-  if (menuIsOpen.value === false) { //if the menu is closed
-    menuIsOpen.value = true; //the menu opens (see v-show)
-    openOrClose.value = 'CLOSE'; //the text is changed to "close"
-  } else {
-    menuIsOpen.value = false; //if you click the canvas when the menu is open, the menu closes (see v-show)
-    openOrClose.value = 'OPEN'; //text changes to "open"
-  }
+<style>
+#canvas {
+  min-width: 100%;
+  min-height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: rgb(154, 167, 219);
+  font-family: Verdana, sans-serif;
+  text-align: center;
 }
 
-function recordMousePosition(event) {
-  x.value = event.pageX; //assigns the mouse-x position (event.pageX) as the value to the x variable
-  y.value = event.pageY; //does the same for y
+#clickText {
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
-function alertTheUser(number) { //when each button is clicked, this function is executed
-  alert("You've clicked button number " + number); //it opens a pop-up stating which button has been clicked (the number of the button) 
-  //canvasHasBeenClicked(event); //keeps the menu open. it changes the center of the menu to the position of the button, so it is disabled
+/* top and left places  top-left corner of  element in center, not the actual center of the element.
+translate(-50%, -50%) moves the element left and up by half of its width and height putting its center in the center of the canvas. */
+
+button {
+  border-radius: 50%;
+  padding: 0;
+  height: 40px;
+  width: 40px;
+  border: 1px solid rgb(32, 32, 100);
+  background-color: white;
+  color: rgb(32, 32, 100);
+  transform: translate(-50%, -50%);
 }
-</script>
+</style>
 
 <template>
   <!-- when the canvas (id of div) is clicked, the function is executed (event listener) -->
@@ -109,37 +111,35 @@ function alertTheUser(number) { //when each button is clicked, this function is 
   </div>
 </template>
 
-<style>
-#canvas {
-  min-width: 100%;
-  min-height: 100%;
-  position: fixed;
-  top: 0;
-  left: 0;
-  background-color: rgb(154, 167, 219);
-  font-family: Verdana, sans-serif;
-  text-align: center;
+<script setup>
+import { ref } from 'vue';
+
+const menuIsOpen = ref(false); //set to false upon initialization
+const openOrClose = ref('OPEN'); //the text that is rendered = when the menu closed, it will say "open"
+const buttons = ref(10); // !!! change the number of buttons
+const radius = ref(100); //the distance from the mouse position to the buttons
+const x = ref(0); //no value yet
+const y = ref(0); //no value yet
+
+function canvasHasBeenClicked(event) { //when the canvas has been clicked
+  recordMousePosition(event); //executes the function
+
+  if (menuIsOpen.value === false) { //if the menu is closed
+    menuIsOpen.value = true; //the menu opens (see v-show)
+    openOrClose.value = 'CLOSE'; //the text is changed to "close"
+  } else {
+    menuIsOpen.value = false; //if you click the canvas when the menu is open, the menu closes (see v-show)
+    openOrClose.value = 'OPEN'; //text changes to "open"
+  }
 }
 
-#clickText {
-  margin: 0;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+function recordMousePosition(event) {
+  x.value = event.pageX; //assigns the mouse-x position (event.pageX) as the value to the x variable
+  y.value = event.pageY; //does the same for y
 }
 
-/* top and left places  top-left corner of  element in center, not the actual center of the element.
-translate(-50%, -50%) moves the element left and up by half of its width and height putting its center in the center of the canvas. */
-
-button {
-  border-radius: 50%;
-  padding: 0;
-  height: 40px;
-  width: 40px;
-  border: 1px solid rgb(32, 32, 100);
-  background-color: white;
-  color: rgb(32, 32, 100);
-  transform: translate(-50%, -50%);
+function alertTheUser(number) { //when each button is clicked, this function is executed
+  alert("You've clicked button number " + number); //it opens a pop-up stating which button has been clicked (the number of the button) 
+  //canvasHasBeenClicked(event); //keeps the menu open. it changes the center of the menu to the position of the button, so it is disabled
 }
-</style>
+</script>
