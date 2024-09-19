@@ -1,5 +1,5 @@
 <!--
-  1. why are we using (event) for the functions?
+  1. :style
   2. find lige ud af hvordan sin/cos bliver regnet ud til at blive x og y + regnestykket med 2pi
   3. CSS: transform: translate(-50%, -50%); - hvad betyder det??
 -->
