@@ -1,12 +1,8 @@
-<!--
-   3. CSS: transform: translate(-50%, -50%); - hvad betyder det??
--->
-
 <script setup>
 import { ref } from 'vue';
 
 const menuIsOpen = ref(false); //set to false upon initialization
-const openOrClose = ref('open'); //the text that is rendered = when the menu closed, it will say "open"
+const openOrClose = ref('OPEN'); //the text that is rendered = when the menu closed, it will say "open"
 const buttons = ref(10); // !!! change the number of buttons
 const radius = ref(100); //the distance from the mouse position to the buttons
 const x = ref(0); //no value yet
@@ -17,10 +13,10 @@ function canvasHasBeenClicked(event) { //when the canvas has been clicked
 
   if (menuIsOpen.value === false) { //if the menu is closed
     menuIsOpen.value = true; //the menu opens (see v-show)
-    openOrClose.value = 'close'; //the text is changed to "close"
+    openOrClose.value = 'CLOSE'; //the text is changed to "close"
   } else {
     menuIsOpen.value = false; //if you click the canvas when the menu is open, the menu closes (see v-show)
-    openOrClose.value = 'open'; //text changes to "open"
+    openOrClose.value = 'OPEN'; //text changes to "open"
   }
 }
 
@@ -120,7 +116,7 @@ function alertTheUser(number) { //when each button is clicked, this function is 
   position: fixed;
   top: 0;
   left: 0;
-  background-color: rgb(180, 150, 180);
+  background-color: rgb(154, 167, 219);
   font-family: Verdana, sans-serif;
   text-align: center;
 }
@@ -141,9 +137,9 @@ button {
   padding: 0;
   height: 40px;
   width: 40px;
-  border: 1px solid white;
-  background-color: DarkOrange;
-  color: white;
+  border: 1px solid rgb(32, 32, 100);
+  background-color: white;
+  color: rgb(32, 32, 100);
   transform: translate(-50%, -50%);
 }
 </style>
